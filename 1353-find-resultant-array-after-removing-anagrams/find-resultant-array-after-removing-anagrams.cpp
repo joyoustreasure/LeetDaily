@@ -1,18 +1,29 @@
 #include <vector>
 #include <string>
-#include <algorithm>
 #include <iostream>
 using namespace std;
 
 class Solution {
 public:
+    // 문자열의 문자들을 정렬하는 함수
+    string sortString(const string& s) {
+        int frequency[26] = {0};
+        for(char c : s) {
+            frequency[c - 'a']++;
+        }
+        
+        string sorted = "";
+        for(int i = 0; i < 26; i++) {
+            sorted += string(frequency[i], 'a' + i);
+        }
+        
+        return sorted;
+    }
+
     vector<string> removeAnagrams(vector<string>& words) {
         for(int i = 1; i < words.size(); i++) {
-            string x = words[i];
-            sort(x.begin(), x.end());
-            
-            string y = words[i-1];
-            sort(y.begin(), y.end());
+            string x = sortString(words[i]);
+            string y = sortString(words[i-1]);
             
             if(x == y) {
                 words.erase(words.begin() + i);
