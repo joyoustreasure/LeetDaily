@@ -1,13 +1,23 @@
 #include <iostream>
 #include <vector>
-#include <algorithm> // sort 함수를 위해 필요
 using namespace std;
 
 class Solution {
 public:
+    // 수동으로 배열을 오름차순으로 정렬하는 함수
+    void sortArray(vector<int>& nums) {
+        for(int i = 0; i < nums.size() - 1; i++) {
+            for(int j = i + 1; j < nums.size(); j++) {
+                if(nums[i] > nums[j]) {
+                    swap(nums[i], nums[j]);
+                }
+            }
+        }
+    }
+
     int minimumOperations(vector<int>& nums) {
         // 배열을 오름차순으로 정렬
-        sort(nums.begin(), nums.end());
+        sortArray(nums);
         int count = 0;
         
         for (int i = 0; i < nums.size(); i++) {
