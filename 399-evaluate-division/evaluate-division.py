@@ -24,8 +24,6 @@ class Solution:
                     if subresult != -1.0:
                         result = val * subresult
                         break
-
-            # visited.remove(src)
             return result
 
         answers = []
